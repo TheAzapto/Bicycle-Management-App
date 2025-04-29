@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { app, auth } from '../firebaseConfig';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  useEffect(() => {
+  const navigate = useNavigate();
+    useEffect(() => {
     // Initialize Firebase
   }, []);
 
@@ -22,7 +24,7 @@ function Login() {
       // The signed-in user info.
       const user = result.user;
       console.log('Google Login Success:', user);
-      // Handle user data or redirect to the home page
+      navigate('/home');
     } catch (error) {
       console.error('Google Login Error:', error);
     }
