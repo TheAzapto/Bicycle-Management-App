@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../firebaseConfig'; // Import the Firebase config
+import { app, auth } from '../firebaseConfig';
 
 function Login() {
   useEffect(() => {
     // Initialize Firebase
-    initializeApp(firebaseConfig);
   }, []);
+
 
   const handleGoogleLogin = async () => {
     try {
-      const auth = getAuth();
       const provider = new GoogleAuthProvider();
 
       // Sign in with Google popup
