@@ -25,6 +25,25 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// UPDATE status of a bicycle
+router.put('/:id/status', async (req, res) => {
+  try {
+    const bicycle = await Bicycle.findById(req.params.id);
+    if (!bicycle) {
+      return res.status(404).json({ message: 'Cannot find bicycle' });
+    }
+    if(req.body.status != null){
+        bicycle.status = req.body.status;
+    }
+
+    await bicycle.save();
+    res.json(bicycle);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+
 // CREATE a new bicycle
 router.post('/', async (req, res) => {
   const bicycle = new Bicycle({
