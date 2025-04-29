@@ -30,10 +30,10 @@ function Home() {
   };
 
   return (
-    <div>
-      <h1>Welcome to the Bicycle Management App</h1>
-      <h2>Current and Past Bookings</h2>
-      <table>
+    <div className="home-container">
+      <h1 className="home-title">Welcome to the Bicycle Management App</h1>
+      <h2 className="bookings-subtitle">Current and Past Bookings</h2>
+      <table className="bookings-table">
         <thead>
           <tr>
             <th>Booking ID</th>
@@ -52,7 +52,7 @@ function Home() {
               <td>{booking.date}</td>
               <td>{booking.startTime}</td>
               <td>{booking.userId}</td>
-              <td><button onClick={() => handleCancelBooking(booking._id)}>Cancel</button></td>
+              <td><button className="cancel-button" onClick={() => handleCancelBooking(booking._id)}>Cancel</button></td>
             </tr>
           ))}
         </tbody>

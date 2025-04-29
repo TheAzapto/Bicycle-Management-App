@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import '../styles.css'
+ 
 function Booking() {
   const [availableSmall, setAvailableSmall] = useState(0);
   const [availableLarge, setAvailableLarge] = useState(0);
@@ -55,18 +56,29 @@ function Booking() {
   };
 
   return (
-    <div>
-      <h1>Booking Page</h1>
-      <p>Available Small Bicycles: {availableSmall}</p>
-      <p>Available Large Bicycles: {availableLarge}</p>
-      <form onSubmit={handleSubmit}>
-        <select name="size" value={bookingData.size} onChange={handleInputChange}>
-          <option value="small">Small</option>
-          <option value="large">Large</option>
-        </select>
-        <input type="date" name="date" value={bookingData.date} onChange={handleInputChange} />
-        <input type="time" name="startTime" value={bookingData.startTime} onChange={handleInputChange} />
-        <button type="submit">Book</button>
+    <div className="booking-container">
+      <h1 className="booking-heading">Booking Page</h1>
+      <div className="availability-info">
+        <p>Available Small Bicycles: <span className="count">{availableSmall}</span></p>
+        <p>Available Large Bicycles: <span className="count">{availableLarge}</span></p>
+      </div>
+      <form className="booking-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="size">Size:</label>
+          <select className="form-input" name="size" id="size" value={bookingData.size} onChange={handleInputChange}>
+            <option value="small">Small</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="date">Date:</label>
+          <input className="form-input" type="date" name="date" id="date" value={bookingData.date} onChange={handleInputChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="startTime">Start Time:</label>
+          <input className="form-input" type="time" name="startTime" id="startTime" value={bookingData.startTime} onChange={handleInputChange} />
+        </div>
+        <button className="book-button" type="submit">Book</button>
       </form>
     </div>
   );
